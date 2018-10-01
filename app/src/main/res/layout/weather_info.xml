@@ -13,6 +13,60 @@
         android:background = "#5d8ade"
         android:gravity = "center_vertical"
         >
+
+        <ImageView
+            android:id="@+id/title_city_manager"
+            android:layout_width="25.0dip"
+            android:layout_height="45.0dip"
+            android:layout_marginLeft="12.0dip"
+            android:src="@drawable/nav_find" />
+
+        <ImageView
+            android:id="@+id/title_seperate"
+            android:layout_width="20.0dip"
+            android:layout_height="30.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/title_city_manager"
+            android:src="@drawable/nav_seperator" />
+
+        <TextView
+            android:id="@+id/title_city_name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/title_seperate"
+            android:gravity="center_vertical"
+            android:paddingLeft="0dip"
+            android:text="北京天氣"
+            android:textColor="#ffffffff"
+            android:textSize="18.0sp" />
+
+        <ImageView
+            android:id="@+id/title_refresh"
+            android:layout_width="25.0dip"
+            android:layout_height="45.0dip"
+            android:layout_marginRight="12.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:src="@drawable/nav_refresh" />
+
+        <ImageView
+            android:id="@+id/title_share"
+            android:layout_width="25.0dip"
+            android:layout_height="45.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_toLeftOf="@id/title_refresh"
+            android:src="@drawable/nav_share" />
+
+        <ImageView
+            android:id="@+id/title_location"
+            android:layout_width="25.0dip"
+            android:layout_height="45.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_toLeftOf="@id/title_share"
+            android:src="@drawable/nav_location" />
+
+
     </RelativeLayout>>
 
 </RelativeLayout>
