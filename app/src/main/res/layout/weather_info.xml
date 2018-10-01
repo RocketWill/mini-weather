@@ -10,7 +10,7 @@
         android:id = "@+id/title"
         android:layout_width = "fill_parent"
         android:layout_height = "45.0dip"
-        android:background = "#5d8ade"
+        android:background = "#0f5571"
         android:gravity = "center_vertical"
         >
 
@@ -19,7 +19,9 @@
             android:layout_width="25.0dip"
             android:layout_height="45.0dip"
             android:layout_marginLeft="12.0dip"
-            android:src="@drawable/nav_find" />
+            android:src="@drawable/nav_find"
+            android:alpha="0.5"
+            />
 
         <ImageView
             android:id="@+id/title_seperate"
@@ -28,7 +30,9 @@
             android:layout_marginLeft="5.0dip"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/title_city_manager"
-            android:src="@drawable/nav_seperator" />
+            android:src="@drawable/nav_seperator"
+            android:alpha="0.5"
+            />
 
         <TextView
             android:id="@+id/title_city_name"
@@ -39,6 +43,7 @@
             android:paddingLeft="0dip"
             android:text="北京天氣"
             android:textColor="#ffffffff"
+            android:alpha="0.7"
             android:textSize="18.0sp" />
 
         <ImageView
@@ -48,26 +53,166 @@
             android:layout_marginRight="12.0dip"
             android:layout_alignParentRight="true"
             android:layout_gravity="center"
+            android:alpha="0.5"
             android:src="@drawable/nav_refresh" />
 
         <ImageView
             android:id="@+id/title_share"
             android:layout_width="25.0dip"
             android:layout_height="45.0dip"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginRight="15.0dip"
             android:layout_toLeftOf="@id/title_refresh"
+            android:alpha="0.5"
             android:src="@drawable/nav_share" />
 
         <ImageView
             android:id="@+id/title_location"
             android:layout_width="25.0dip"
             android:layout_height="45.0dip"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginRight="15.0dip"
             android:layout_toLeftOf="@id/title_share"
+            android:alpha="0.5"
             android:src="@drawable/nav_location" />
 
 
-    </RelativeLayout>>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/title"
+        android:background="@drawable/beijing_bg_3x"
+        android:scaleType="centerInside"
+        >
+
+        <RelativeLayout
+            android:id="@+id/weather_today"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10.0dip"
+            >
+
+            <!--City Name-->
+            <TextView
+                android:id="@+id/city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="15dip"
+                android:singleLine="true"
+                android:text="北京"
+                android:textColor="#ffffff"
+                android:textSize="30.0sp"
+                />
+
+            <!--Announce Time-->
+            <TextView
+                android:id="@+id/announce_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/city_name"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="4dip"
+                android:singleLine="true"
+                android:text="今天 18:43 發佈"
+                android:textColor="#ffffff"
+                android:textSize="14.0sp"
+                />
+
+            <!--Ｈumidity-->
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/announce_time"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="4dip"
+                android:singleLine="true"
+                android:text="濕度 21%"
+                android:textColor="#ffffff"
+                android:textSize="14.0sp"
+                />
+
+            <!--PM2.5-->
+            <LinearLayout
+                android:id="@+id/pm2_5_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <!--Detail Info of PM 2.5-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--PM2.5 Text Detail-->
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--PM 2.5 Title-->
+                        <TextView
+                            android:id="@+id/pm2_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="PM2.5"
+                            android:textColor="#ffffff"
+                            android:textSize="12.0dip"
+                            />
+
+                        <!--PM 2.5 Index-->
+                        <TextView
+                            android:id="@+id/pm2_5_index"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="220"
+                            android:textColor="#ffffff"
+                            android:textSize="30.0dip"
+                            />
+                    </LinearLayout>
+
+                    <!--PM 2.5 Image-->
+                    <ImageView
+                        android:id="@+id/pm_2_5_img"
+                        android:layout_width="52.0dip"
+                        android:layout_height="56.0dip"
+
+                        android:layout_marginLeft="10.0dip"
+                        android:src="@drawable/pm2_5"
+                        />
+
+                </LinearLayout>>
+
+                <!--污染等級-->
+                <TextView
+                    android:id="@+id/pm2_5_quility"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="重度污染"
+                    android:textColor="#ffffff"
+                    android:textSize="20.0sp"/>
+
+
+
+
+            </LinearLayout>>
+
+
+        </RelativeLayout>>
+
+    </LinearLayout>
 
 </RelativeLayout>
 
