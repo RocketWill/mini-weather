@@ -137,14 +137,16 @@
                 android:textSize="14.0sp"
                 />
 
-            <!--PM2.5-->
+            <!--PM2.5 Section-->
             <LinearLayout
                 android:id="@+id/pm2_5_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="15.0dip"
+                >
 
                 <!--Detail Info of PM 2.5-->
                 <LinearLayout
@@ -209,8 +211,78 @@
 
             </LinearLayout>>
 
+            <!--Today Weather Section-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/humidity"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30.0dip"
+                android:layout_marginLeft="10.0dip">
 
-        </RelativeLayout>>
+                <!--Weather Image Icon-->
+                <ImageView
+                    android:id="@+id/weather_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/weather_image"
+                    />
+
+                <!--Week of Today-->
+                <TextView
+                    android:id="@+id/week_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/weather_image"
+                    android:singleLine="true"
+                    android:text="今天 星期天"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
+
+                <!--Range of Temperature-->
+                <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/week_today"
+                    android:layout_toRightOf="@id/weather_image"
+                    android:singleLine="true"
+                    android:text="2℃~7℃"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp" />
+
+                <!--Weather Detail-->
+                <TextView
+                    android:id="@+id/climate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/temperature"
+                    android:layout_toRightOf="@id/weather_image"
+                    android:singleLine="true"
+                    android:text="多雲轉晴"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+                <!--Wind Info-->
+                <TextView
+                    android:id="@+id/wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/climate"
+                    android:layout_toRightOf="@id/weather_image"
+                    android:singleLine="true"
+                    android:text="微風"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 
