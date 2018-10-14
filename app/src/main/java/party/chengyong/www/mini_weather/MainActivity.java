@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -28,6 +29,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private ImageView mUpdateBtn;
 
+    private TextView cityTV, timeTV, humidityTV, weekTV, pmDataTV, pmQualityTV, temperatureTV, climateTV, windTV, cityNameTV;
+    private ImageView weatherImg, pmImg;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +40,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mUpdateBtn = (ImageView)findViewById(R.id.title_refresh);
         mUpdateBtn.setOnClickListener(this);
 
+        NetUtil netutil = new NetUtil();
+        if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
+            Log.d("mini_weather","網路ok");
+        }else{
+            Log.d("mini_weather","網路掛了");
+        }
 
-//        NetUtil netutil = new NetUtil();
-//
-//        if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
-//            Log.d("mini_weather","網路ok");
-//            queryWeatherCode("101010100");
-//        }
+        initView();
     }
 
     @Override
@@ -58,6 +63,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 queryWeatherCode(cityCode);
             }
         }
+    }
+
+    //初始化控件内容
+    void initView() {
+        cityNameTV = (TextView) findViewById(R.id.title_city_name);
+        cityTV = (TextView) findViewById(R.id.city_name);
+        timeTV = (TextView) findViewById(R.id.announce_time);
+        humidityTV = (TextView) findViewById(R.id.humidity);
+        weekTV = (TextView) findViewById(R.id.week_today);
+        pmDataTV = (TextView) findViewById(R.id.pm2_5_index);
+        pmQualityTV = (TextView) findViewById(R.id.pm2_5_quility);
+        pmImg = (ImageView) findViewById(R.id.pm_2_5_img);
+        temperatureTV = (TextView) findViewById(R.id.temperature);
+        climateTV = (TextView) findViewById(R.id.climate);
+        windTV = (TextView) findViewById(R.id.wind);
+        weatherImg = (ImageView) findViewById(R.id.weather_image);
+
+        cityNameTV.setText("N/A");
+        cityTV.setText("N/A");
+        timeTV.setText("N/A");
+        humidityTV.setText("N/A");
+        weekTV.setText("N/A");
+        pmDataTV.setText("N/A");
+        pmQualityTV.setText("N/A");
+        temperatureTV.setText("N/A");
+        climateTV.setText("N/A");
+        windTV.setText("N/A");
     }
 
     private void queryWeatherCode(String cityCode) {
