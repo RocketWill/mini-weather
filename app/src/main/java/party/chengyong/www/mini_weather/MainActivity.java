@@ -3,6 +3,7 @@ package party.chengyong.www.mini_weather;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,6 +33,8 @@ import party.chengyong.www.mini_weather.util.NetUtil;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final int UPDATE_TODAY_WEATHER = 1;
+
+    private ImageView mCitySelect;
 
     private ImageView mUpdateBtn;
 
@@ -66,11 +69,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("mini_weather","網路掛了");
         }
 
+        mCitySelect = (ImageView) findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
+
         initView();
     }
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.title_city_manager){
+            Intent i = new Intent(this, SelectCity.class);
+            startActivity(i);
+        }
+
         if (view.getId() == R.id.title_refresh){
             SharedPreferences sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101010100");
@@ -333,7 +344,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     //去除 “高溫” 和 “低溫”
-    public String trimTemperatureString(String getTem){
+    private String trimTemperatureString(String getTem){
         char[] chrArr = getTem.toCharArray();
         String result = "";
         for (int i=3;i<chrArr.length;i++){

@@ -17,6 +17,10 @@ package="party.chengyong.www.mini_weather">
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SelectCity">
+
+        </activity>>
     </application>
 
 
