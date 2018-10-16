@@ -187,7 +187,7 @@
                     <!--PM 2.5 Image-->
                     <ImageView
                         android:id="@+id/pm_2_5_img"
-                        android:layout_width="52.0dip"
+                        android:layout_width="50.0dip"
                         android:layout_height="56.0dip"
 
                         android:layout_marginLeft="10.0dip"
@@ -225,8 +225,8 @@
                 <!--Weather Image Icon-->
                 <ImageView
                     android:id="@+id/weather_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60.0dip"
+                    android:layout_height="60.0dip"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/weather_image"
                     />
@@ -255,7 +255,7 @@
                     android:singleLine="true"
                     android:text="2℃~7℃"
                     android:textColor="#ffffff"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
 
                 <!--Weather Detail-->
                 <TextView
