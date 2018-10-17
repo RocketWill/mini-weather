@@ -2,7 +2,9 @@
 package="party.chengyong.www.mini_weather">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="party.chengyong.www.app.MyApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,8 +22,7 @@ package="party.chengyong.www.mini_weather">
 
         <activity android:name=".SelectCity">
 
-        </activity>>
+        </activity>
     </application>
-
 
 </manifest>

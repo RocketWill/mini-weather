@@ -65,6 +65,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         NetUtil netutil = new NetUtil();
         if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
             Log.d("mini_weather","網路ok");
+            //queryWeatherCode("101010100");
         }else{
             Log.d("mini_weather","網路掛了");
         }
@@ -79,7 +80,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.title_city_manager){
             Intent i = new Intent(this, SelectCity.class);
-            startActivity(i);
+            //startActivity(i);
+            startActivityForResult(i,1);
         }
 
         if (view.getId() == R.id.title_refresh){
@@ -91,6 +93,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
                 Log.d("mini_weather","網路ok");
                 queryWeatherCode(cityCode);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK){
+            String newCityCode = data.getStringExtra("cityCode");
+            Log.d("mini_weather", "The city code you select is " + newCityCode);
+
+            if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
+                Log.d("mini_weather", "網路OK");
+                queryWeatherCode(newCityCode);
+            }else{
+                Log.d("mini_weather","網路掛了");
+                Toast.makeText(MainActivity.this, "Please Check the Network", Toast.LENGTH_LONG).show();
             }
         }
     }

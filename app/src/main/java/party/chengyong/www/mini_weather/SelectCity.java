@@ -1,6 +1,7 @@
 package party.chengyong.www.mini_weather;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,7 +16,10 @@ public class SelectCity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.select_city);
+        initViews();
+    }
 
+    private void initViews() {
         mBackBtn = (ImageView) findViewById(R.id.title_back);
         mBackBtn.setOnClickListener(this);
     }
@@ -23,6 +27,9 @@ public class SelectCity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.title_back){
+            Intent i = new Intent();
+            i.putExtra("cityCode","101160101");
+            setResult(RESULT_OK, i);
             finish();
         }
     }
