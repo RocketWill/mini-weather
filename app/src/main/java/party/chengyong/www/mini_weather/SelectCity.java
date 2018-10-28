@@ -64,6 +64,15 @@ public class SelectCity extends Activity implements View.OnClickListener {
                 Toast toast = Toast.makeText(SelectCity.this,
                         "你選中的是: "+city.getCity()+" "+city.getNumber(), Toast.LENGTH_LONG);
                 toast.show();
+
+                Intent appInfo = new Intent(SelectCity.this, MainActivity.class);
+
+                appInfo.putExtra("cityCode",city.getNumber());
+                setResult(RESULT_OK, appInfo);
+                finish();
+                //startActivity(appInfo);
+
+
             }
         });
     }
@@ -72,7 +81,7 @@ public class SelectCity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.title_back){
             Intent i = new Intent();
-            i.putExtra("cityCode",cityCode);
+            i.putExtra("cityCode","101280101");
             setResult(RESULT_OK, i);
             finish();
         }
