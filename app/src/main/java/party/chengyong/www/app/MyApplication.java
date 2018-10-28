@@ -22,7 +22,7 @@ public class MyApplication extends Application{
     private List<City> mCityList;
 
     private void initCityList(){
-        mCityList = new ArrayList<City>();
+        mCityList = new ArrayList<City>(); //city list
         new Thread(new Runnable() {
             @Override
             public void run() {
