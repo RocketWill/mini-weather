@@ -14,6 +14,9 @@ import java.util.List;
 import party.chengyong.www.bean.City;
 import party.chengyong.www.db.CityDB;
 
+
+//Application实例拥有着与APP一样长的生命周期：在APP开启的时候首先就会实例化它，然后才是入口的Activity或者Service等
+//Application与APP“同生共死”，在一个APP的生命周期只实例化一次，所以它“天生”就是一个单例，不需要使用单例模式去实现它
 public class MyApplication extends Application{
     private static final String TAG = "MyApp";
 
@@ -21,6 +24,7 @@ public class MyApplication extends Application{
     private CityDB mCityDB;
     private List<City> mCityList;
 
+//    用多線程方式獲取程式列表
     private void initCityList(){
         mCityList = new ArrayList<City>(); //city list
         new Thread(new Runnable() {
@@ -31,6 +35,7 @@ public class MyApplication extends Application{
         }).start();
     }
 
+//  獲取程式列表，元素為City類型
     private boolean prepareCityList(){
         mCityList = mCityDB.getAllCity();
         int i = 0;
@@ -44,6 +49,7 @@ public class MyApplication extends Application{
         return true;
     }
 
+//   返回程式列表，元素為City類型
     public List<City> getCityList(){
         return mCityList;
     }
@@ -57,10 +63,12 @@ public class MyApplication extends Application{
         initCityList();
     }
 
+//    返回一個myApplication實例
     public static MyApplication getInstance(){
         return myApplication;
     }
 
+//    開啟程式列表據庫，並讀取內容，返回CityDB類型
     private CityDB openCityDB() {
         String path = "/data"
                 + Environment.getDataDirectory().getAbsolutePath()
@@ -72,6 +80,7 @@ public class MyApplication extends Application{
         File db = new File(path);
         Log.d(TAG, path);
 
+
         if (!db.exists()){
             String pathfolder = "/data"
                     + Environment.getDataDirectory().getAbsolutePath()
@@ -81,11 +90,14 @@ public class MyApplication extends Application{
 
             File dirFirstFolder = new File(pathfolder);
 
+//            如果文件夾不存在，則創建新的
             if (!dirFirstFolder.exists()){
                 dirFirstFolder.mkdirs();
                 Log.i(TAG,"mkdirs");
             }
             Log.i(TAG, "db is not exists");
+
+//            讀取數據庫資料
             try{
                 InputStream is = getAssets().open("city.db");
                 FileOutputStream fos = new FileOutputStream(db);
