@@ -41,11 +41,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView cityTV, timeTV, humidityTV, weekTV, pmDataTV, pmQualityTV, temperatureTV, climateTV, windTV, cityNameTV;
     private ImageView weatherImg, pmImg;
 
+//  异步消息处理线程
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case UPDATE_TODAY_WEATHER:
+//                  更新天氣資訊
                     updateTodayWeather((TodayWeather) msg.obj);
                     break;
                 default:
@@ -54,6 +56,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     };
 
+
+//    一個Activity啟動後出現在手機螢幕上，之後再由使用者按下返回鍵結束Activity
+//    1. 當Activity準備要產生時，先呼叫onCreate方法。
+//    2. Activity產生後（還未出現在手機螢幕上），呼叫onStart方法。
+//    3. 當Activity出現手機上後，呼叫onResume方法。
+//    4. 當使用者按下返回鍵結束Activity時， 先呼叫onPause方法。
+//    5. 當Activity從螢幕上消失時，呼叫onStop方法。
+//    6. 最後完全結束Activity之前，呼叫onDestroy方法。
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mUpdateBtn = (ImageView)findViewById(R.id.title_refresh);
         mUpdateBtn.setOnClickListener(this);
 
+//       檢查网络连接是否可用
         NetUtil netutil = new NetUtil();
         if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
             Log.d("mini_weather","網路ok");
@@ -70,12 +81,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("mini_weather","網路掛了");
         }
 
+//      初始化左上角搜尋城市button
         mCitySelect = (ImageView) findViewById(R.id.title_city_manager);
+//      註冊事件發生時的處理物件
         mCitySelect.setOnClickListener(this);
-
+//      初始化控件內容
         initView();
     }
 
+//  按鈕上發生點擊事件時，會呼叫該事件處理物件的 onClick() 方法
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.title_city_manager){
@@ -85,6 +99,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
 
         if (view.getId() == R.id.title_refresh){
+
+//            SharedPreferences可以儲存如帳號、設定、上一次登入時間，等等簡單數據
             SharedPreferences sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101010100");
             Log.d("mini_weather",cityCode);
@@ -97,6 +113,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+//    在一个主界面(主Activity)上能连接往许多不同子功能模块(子Activity上去)，
+//    当子模块的事情做完之后就回到主界面，或许还同时返回一些子模块完成的数据交给主Activity处理。
+//    如此数据交流就要使用回调函数onActivityResult。
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK){
@@ -140,6 +159,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         windTV.setText("N/A");
     }
 
+//  獲取網址中的資訊（更新主线程UI採用异步任务处理多线程）
     private void queryWeatherCode(String cityCode) {
         final String address = "http://wthrcdn.etouch.cn/WeatherApi?citykey=" + cityCode;
         Log.d("mini_weather",address);
@@ -164,6 +184,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     }
                     String responseStr = response.toString();
                     Log.d("mini_weather", responseStr);
+
+//                  解析天氣資訊
                     todayWeather = parseXML(responseStr);
                     if (todayWeather != null){
                         Log.d("mini_weather",todayWeather.toString());
@@ -183,6 +205,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }).start();
     }
 
+//  解析XML內容，將需要的資訊提取出來
     private TodayWeather parseXML(String xmldata){
 
         //将解析的数据存入TodayWeather对象中
@@ -282,7 +305,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return todayWeather;
     }
 
-    //编写 updateTodayWeather 函数
+    //编写 updateTodayWeather 函数，用於更新UI介面天氣資訊顯示
     void updateTodayWeather(TodayWeather todayWeather){
         cityNameTV.setText(todayWeather.getCity()+"天氣");
         cityTV.setText(todayWeather.getCity());
