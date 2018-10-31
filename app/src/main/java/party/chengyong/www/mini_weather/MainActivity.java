@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,6 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initView();
     }
 
+
 //  按鈕上發生點擊事件時，會呼叫該事件處理物件的 onClick() 方法
     @Override
     public void onClick(View view) {
@@ -103,11 +105,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //            SharedPreferences可以儲存如帳號、設定、上一次登入時間，等等簡單數據
             SharedPreferences sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101011000");
+            ImageView refresh = (ImageView) findViewById(R.id.title_refresh);
             Log.d("mini_weather",cityCode);
 
             NetUtil netutil = new NetUtil();
             if (netutil.getNetworkState(this) != netutil.NETWORN_NONE){
                 Log.d("mini_weather","網路ok");
+                mRotation(refresh);
                 queryWeatherCode(cityCode);
             }
         }
@@ -440,5 +444,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
             result += chrArr[i];
         }
         return result;
+    }
+
+    //    點下refresh開始旋轉
+    public void mRotation(ImageView iv){
+        int mCurrRotation = 0;
+        mCurrRotation %= 360;
+        float fromRotation = mCurrRotation;
+        float toRotation = mCurrRotation += 360;
+
+        final RotateAnimation rotateAnim = new RotateAnimation(
+                fromRotation, toRotation, iv.getWidth()/2, iv.getHeight()/2);
+
+        rotateAnim.setDuration(1000); // Use 0 ms to rotate instantly
+        rotateAnim.setFillAfter(true); // Must be true or the animation will reset
+
+        iv.startAnimation(rotateAnim);
     }
 }

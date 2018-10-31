@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="50dp"
+        android:layout_width="match_parent">
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:id="@+id/listview_province"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Text"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/listview_cityname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_alignBottom="@id/listview_province"
+            android:layout_toRightOf="@id/listview_province"
+            android:text="Text"
+            android:textSize="15sp" />
+    </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
