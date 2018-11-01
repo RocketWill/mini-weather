@@ -23,7 +23,7 @@ public class CityDB {
         List<City> list = new ArrayList<City>();
         Cursor c = db.rawQuery("SELECT * FROM "+ CITY_TABLE_NAME, null);
         while (c.moveToNext()){
-            //String id = c.getColumnName((c.getColumnIndex("_id")));
+            String id = c.getColumnName((c.getColumnIndex("_id")));
             String province = c.getString(c.getColumnIndex("province"));
             String city = c.getString(c.getColumnIndex("city"));
             String number = c.getString(c.getColumnIndex("number"));

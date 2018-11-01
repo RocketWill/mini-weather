@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -131,6 +132,12 @@ public class SelectCity extends Activity implements View.OnClickListener {
 //                putExtra方法能傳遞簡單的值，將cityCode傳回給 MainActivity
                 appInfo.putExtra("cityCode",city.getNumber());
                 setResult(RESULT_OK, appInfo);
+
+//                將cityCode寫入SharedPreferences
+                SharedPreferences pref = getSharedPreferences("config", MODE_PRIVATE);
+                pref.edit().putString("main_city_code", city.getNumber()).commit();
+
+
 
                 //退棧（返回前一個Activity）
                 finish();

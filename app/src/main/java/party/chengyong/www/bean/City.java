@@ -1,6 +1,7 @@
 package party.chengyong.www.bean;
 
 public class City {
+    private String id;
     private String privince;
     private String city;
     private String number;
@@ -9,12 +10,21 @@ public class City {
     private String allFirstPY;
 
     public City(String privince, String city, String number, String firstPY, String allPY, String allFirstPY) {
+        this.id = id;
         this.privince = privince;
         this.city = city;
         this.number = number;
         this.firstPY = firstPY;
         this.allPY = allPY;
         this.allFirstPY = allFirstPY;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(){
+        this.id = id;
     }
 
     public String getPrivince() {

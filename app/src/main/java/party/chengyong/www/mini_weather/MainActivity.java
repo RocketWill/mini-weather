@@ -151,16 +151,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         windTV = (TextView) findViewById(R.id.wind);
         weatherImg = (ImageView) findViewById(R.id.weather_image);
 
-        cityNameTV.setText("N/A");
-        cityTV.setText("N/A");
-        timeTV.setText("N/A");
-        humidityTV.setText("N/A");
-        weekTV.setText("N/A");
-        pmDataTV.setText("N/A");
-        pmQualityTV.setText("N/A");
-        temperatureTV.setText("N/A");
-        climateTV.setText("N/A");
-        windTV.setText("N/A");
+        SharedPreferences sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
+        String cityCode = sharedPreferences.getString("main_city_code", "101011000");
+        queryWeatherCode(cityCode);
+//        cityNameTV.setText("N/A");
+//        cityTV.setText("N/A");
+//        timeTV.setText("N/A");
+//        humidityTV.setText("N/A");
+//        weekTV.setText("N/A");
+//        pmDataTV.setText("N/A");
+//        pmQualityTV.setText("N/A");
+//        temperatureTV.setText("N/A");
+//        climateTV.setText("N/A");
+//        windTV.setText("N/A");
     }
 
 //  獲取網址中的資訊（更新主线程UI採用异步任务处理多线程）
