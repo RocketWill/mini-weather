@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final int UPDATE_TODAY_WEATHER = 1;
 
     private ImageView mCitySelect;
-
+    private String cityName;
     private ImageView mUpdateBtn;
 
     private TextView cityTV, timeTV, humidityTV, weekTV, pmDataTV, pmQualityTV, temperatureTV, climateTV, windTV, cityNameTV;
@@ -96,7 +96,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.title_city_manager){
             Intent i = new Intent(this, SelectCity.class);
-            //startActivity(i);
+            i.putExtra("cityName",cityName);
+            Log.d("dick",cityName);
             startActivityForResult(i,1);
         }
 
@@ -244,6 +245,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                                 evenType = xmlPullParser.next();
                                 Log.d("mini_weather","city: " + xmlPullParser.getText());
                                 todayWeather.setCity(xmlPullParser.getText());
+                                cityName=xmlPullParser.getText();
                             }else if (xmlPullParser.getName().equals("updatetime")){
                                 evenType = xmlPullParser.next();
                                 Log.d("mini_weather","updatetime: " + xmlPullParser.getText());

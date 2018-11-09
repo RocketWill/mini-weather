@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,16 +47,43 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/search_edit_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_nav">
+        android:background="#ededed"
+        android:layout_below="@id/top_nav"
+        >
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/contact_search_box_edittext_keyword_background"
+            android:drawableLeft="@drawable/magnifying_glass"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:hint="Search Cities"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="#ff000000"
+            android:textColorHint="#ffcccccc"
+            android:textSize="15.0sp"/>
+     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_edit_content">
 
         <ListView
-            android:layout_below="@id/top_nav"
+            android:layout_below="@id/search_edit_content"
             android:id="@+id/title_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"/>
+            android:background="#ffffff"
+            tools:ignore="NotSibling" />
 
     </RelativeLayout>
 </RelativeLayout>
