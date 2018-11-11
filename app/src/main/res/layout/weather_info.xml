@@ -286,12 +286,18 @@
 
             </RelativeLayout>
 
-
+            <ImageView android:layout_height="30px"
+                android:id="@+id/hr"
+                android:layout_width="wrap_content"
+                android:src="@drawable/hr"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/today_weather_detail"/>
 
             <RelativeLayout android:layout_width="wrap_content"
                 android:layout_height="250px"
-                android:layout_below="@id/today_weather_detail"
-                android:layout_marginTop="25dp">
+                android:layout_below="@id/hr"
+                android:layout_marginTop="15dp"
+                android:id="@+id/pager_content">
                 <android.support.v4.view.ViewPager
                     android:id="@+id/pager"
                     android:layout_width="wrap_content"
@@ -299,6 +305,12 @@
                     android:layout_alignParentBottom="true">
                 </android.support.v4.view.ViewPager>
             </RelativeLayout>
+
+            <ImageView android:layout_height="30px"
+                android:layout_width="wrap_content"
+                android:src="@drawable/hr"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/pager_content"/>
 
 
         </RelativeLayout>
