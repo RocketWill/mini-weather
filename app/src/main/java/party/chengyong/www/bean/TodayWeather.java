@@ -33,6 +33,144 @@ public class TodayWeather {
     private String type3;
     private String fengli3;
 
+    private String date4;
+    private String low4;
+    private String heigh4;
+    private String type4;
+    private String fengli4;
+
+    private String date5;
+    private String low5;
+    private String heigh5;
+    private String type5;
+    private String fengli5;
+
+    private String date6;
+    private String low6;
+    private String heigh6;
+    private String type6;
+    private String fengli6;
+
+    public String getDate4() {
+        return date4;
+    }
+
+    public void setDate4(String date4) {
+        this.date4 = date4;
+    }
+
+    public String getLow4() {
+        return low4;
+    }
+
+    public void setLow4(String low4) {
+        this.low4 = low4;
+    }
+
+    public String getHeigh4() {
+        return heigh4;
+    }
+
+    public void setHeigh4(String heigh4) {
+        this.heigh4 = heigh4;
+    }
+
+    public String getType4() {
+        return type4;
+    }
+
+    public void setType4(String type4) {
+        this.type4 = type4;
+    }
+
+    public String getFengli4() {
+        return fengli4;
+    }
+
+    public void setFengli4(String fengli4) {
+        this.fengli4 = fengli4;
+    }
+
+    public String getDate5() {
+        return date5;
+    }
+
+    public void setDate5(String date5) {
+        this.date5 = date5;
+    }
+
+    public String getLow5() {
+        return low5;
+    }
+
+    public void setLow5(String low5) {
+        this.low5 = low5;
+    }
+
+    public String getHeigh5() {
+        return heigh5;
+    }
+
+    public void setHeigh5(String heigh5) {
+        this.heigh5 = heigh5;
+    }
+
+    public String getType5() {
+        return type5;
+    }
+
+    public void setType5(String type5) {
+        this.type5 = type5;
+    }
+
+    public String getFengli5() {
+        return fengli5;
+    }
+
+    public void setFengli5(String fengli5) {
+        this.fengli5 = fengli5;
+    }
+
+    public String getDate6() {
+        return date6;
+    }
+
+    public void setDate6(String date6) {
+        this.date6 = date6;
+    }
+
+    public String getLow6() {
+        return low6;
+    }
+
+    public void setLow6(String low6) {
+        this.low6 = low6;
+    }
+
+    public String getHeigh6() {
+        return heigh6;
+    }
+
+    public void setHeigh6(String heigh6) {
+        this.heigh6 = heigh6;
+    }
+
+    public String getType6() {
+        return type6;
+    }
+
+    public void setType6(String type6) {
+        this.type6 = type6;
+    }
+
+    public String getFengli6() {
+        return fengli6;
+    }
+
+    public void setFengli6(String fengli6) {
+        this.fengli6 = fengli6;
+    }
+
     public String getDate1() {
         return date1;
     }
@@ -279,6 +417,21 @@ public class TodayWeather {
                 ", heigh3='" + heigh3 + '\'' +
                 ", type3='" + type3 + '\'' +
                 ", fengli3='" + fengli3 + '\'' +
+                ", date4='" + date4 + '\'' +
+                ", low4='" + low4 + '\'' +
+                ", heigh4='" + heigh4 + '\'' +
+                ", type4='" + type4 + '\'' +
+                ", fengli4='" + fengli4 + '\'' +
+                ", date5='" + date5 + '\'' +
+                ", low5='" + low5 + '\'' +
+                ", heigh5='" + heigh5 + '\'' +
+                ", type5='" + type5 + '\'' +
+                ", fengli5='" + fengli5 + '\'' +
+                ", date6='" + date6 + '\'' +
+                ", low6='" + low6 + '\'' +
+                ", heigh6='" + heigh6 + '\'' +
+                ", type6='" + type6 + '\'' +
+                ", fengli6='" + fengli6 + '\'' +
                 '}';
     }
 }

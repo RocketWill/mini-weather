@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/fore11_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/fore11_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="今天星期三"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore11_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore11_day"
+                android:singleLine="true"
+                android:text="溫度"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore11_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore11_temp"
+                android:singleLine="true"
+                android:text="晴"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore11_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore11_weather"
+                android:singleLine="true"
+                android:text="微風"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fore21_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/fore11_content">
+
+            <TextView
+                android:id="@+id/fore21_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="今天星期三"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore21_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore21_day"
+                android:singleLine="true"
+                android:text="溫度"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore21_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore21_temp"
+                android:singleLine="true"
+                android:text="晴"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore21_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore21_weather"
+                android:singleLine="true"
+                android:text="微風"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fore31_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/fore21_content">
+
+            <TextView
+                android:id="@+id/fore31_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="今天星期三"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore31_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore31_day"
+                android:singleLine="true"
+                android:text="溫度"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore31_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore31_temp"
+                android:singleLine="true"
+                android:text="晴"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/fore31_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fore31_weather"
+                android:singleLine="true"
+                android:text="微風"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
