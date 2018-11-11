@@ -66,7 +66,6 @@ public class SelectCity extends Activity implements View.OnClickListener {
         mCityList = app.getCityList();
         for (City city:mCityList){
             Log.d("sex",city.getCity());
-
         }
 
 
