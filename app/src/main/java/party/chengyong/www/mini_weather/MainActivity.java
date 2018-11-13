@@ -45,6 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ImageView mCitySelect;
     private String cityName;
     private ImageView mUpdateBtn;
+    private ImageView locateBtn;
 
     private TextView cityTV, timeTV, humidityTV, weekTV, pmDataTV, pmQualityTV, temperatureTV, climateTV, windTV, cityNameTV;
     private ImageView weatherImg, pmImg;
@@ -89,6 +90,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mUpdateBtn = (ImageView)findViewById(R.id.title_refresh);
         mUpdateBtn.setOnClickListener(this);
+        locateBtn = (ImageView) findViewById(R.id.title_location);
+        locateBtn.setOnClickListener(this);
 
 //       檢查网络连接是否可用
         NetUtil netutil = new NetUtil();
@@ -137,6 +140,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 queryWeatherCode(cityCode);
             }
         }
+
+        if(view.getId() == R.id.title_location){
+            Intent i = new Intent(this, Locate.class);
+            startActivityForResult(i,2);
+        }
     }
 
 //    在一个主界面(主Activity)上能连接往许多不同子功能模块(子Activity上去)，
@@ -144,9 +152,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //    如此数据交流就要使用回调函数onActivityResult。
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK){
+        if (requestCode == 1 || requestCode == 2 && resultCode == RESULT_OK){
             String newCityCode = data.getStringExtra("cityCode");
-            Log.d("mini_weather", "The city code you select is " + newCityCode);
+            Log.d("mini_weather_citycode", "The city code you select is " + newCityCode);
 
             if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
                 Log.d("mini_weather", "網路OK");
@@ -156,6 +164,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(MainActivity.this, "Please Check the Network", Toast.LENGTH_LONG).show();
             }
         }
+
+
     }
 
     //初始化控件内容
