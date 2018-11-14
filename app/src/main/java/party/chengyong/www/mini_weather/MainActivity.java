@@ -46,6 +46,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private String cityName;
     private ImageView mUpdateBtn;
     private ImageView locateBtn;
+    private ImageView shareBtn;
 
     private TextView cityTV, timeTV, humidityTV, weekTV, pmDataTV, pmQualityTV, temperatureTV, climateTV, windTV, cityNameTV;
     private ImageView weatherImg, pmImg;
@@ -92,6 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mUpdateBtn.setOnClickListener(this);
         locateBtn = (ImageView) findViewById(R.id.title_location);
         locateBtn.setOnClickListener(this);
+        shareBtn = (ImageView) findViewById(R.id.title_share);
+        shareBtn.setOnClickListener(this);
 
 //       檢查网络连接是否可用
         NetUtil netutil = new NetUtil();
@@ -144,6 +147,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if(view.getId() == R.id.title_location){
             Intent i = new Intent(this, Locate.class);
             startActivityForResult(i,2);
+        }
+
+        if (view.getId() == R.id.title_share){
+            String message = weekTV.getText().toString()+" "+cityTV.getText().toString()+"的天氣:\n"+
+                    "溫度: "+temperatureTV.getText().toString()+"\n"+
+                    "PM2.5: "+pmDataTV.getText().toString()+" ("+pmQualityTV.getText().toString()+")\n"+
+                    "氣候: "+climateTV.getText().toString()+"\n"+
+                    windTV.getText().toString();
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("text/plain");
+            share.putExtra(Intent.EXTRA_TEXT, message);
+
+            startActivity(Intent.createChooser(share, "將天氣分享給親朋好友吧！"));
         }
     }
 
