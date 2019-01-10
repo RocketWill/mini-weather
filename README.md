@@ -12,4 +12,4 @@
 4. 分享功能
 <img src="http://35.200.105.78/wxmini/share.png" width="400">
 5. 透過短訊分享
-<img src="http://35.200.105.78/wxmini/gps-share.png" width="400">
+<img src="http://35.200.105.78/wxmini/msg-share.png" width="400">
